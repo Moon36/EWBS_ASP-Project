@@ -1,0 +1,9 @@
+% Author: Manuel Waibel (11907091)
+% Exercise 3
+% University Salary Database Query
+
+% Add implied rules
+assists(X, Z) :- assists(X, Y), assists(Y, Z).
+
+groupExpenses(G, C) :- assigned(P, G), C = #sum{X1, P2 : assigned(P2, G), person(P2, X1); X2, P3 : assigned(P2, G), person(P3, X2), assists(P3, P2)}.
+universityExpenses(C) :- C = #sum{X, P : person(P, X), assigned(P, G); X2, P2 : person(P2, X2), assigned(P, G), assists(P2, P)}.

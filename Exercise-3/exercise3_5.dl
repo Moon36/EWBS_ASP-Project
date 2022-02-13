@@ -1,0 +1,18 @@
+#show groupExpenses/2.
+#show universityExpenses/1.
+% Model: universityExpenses(500). groupExpenses(g1,300). groupExpenses(g2,200).
+
+person(a, 100).
+person(b, 100).
+person(c, 100).
+person(d, 100).
+person(e, 100).
+
+assists(f, a).
+
+assigned(a, g1).
+assigned(b, g1).
+assigned(c, g1).
+
+assigned(d, g2).
+assigned(e, g2).

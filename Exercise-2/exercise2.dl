@@ -1,0 +1,22 @@
+% Author: Manuel Waibel (11907091)
+% Exercise 1
+% Generalised Rook Problem
+
+% Initialize by placing rooks randomly
+1 = {rookPos(R, 1..N, 1..N)} :- rookAttacks(R, _), size(N).
+
+attackable(R1, R2) :- rookPos(R1, X, Y1), rookPos(R2, X, Y2), rookPos(R3, X, Y3), R1!=R2, R2!=R3, R1!=R3, Y1 < Y2, Y2 < Y3.
+attackable(R1, R2) :- rookPos(R1, X, Y1), rookPos(R2, X, Y2), rookPos(R3, X, Y3), R1!=R2, R2!=R3, R1!=R3, Y1 > Y2, Y2 > Y3.
+attackable(R1, R2) :- rookPos(R1, X1, Y), rookPos(R2, X2, Y), rookPos(R3, X3, Y), R1!=R2, R2!=R3, R1!=R3, X1 < X2, X2 < X3.
+attackable(R1, R2) :- rookPos(R1, X1, Y), rookPos(R2, X2, Y), rookPos(R3, X3, Y), R1!=R2, R2!=R3, R1!=R3, X1 > X2, X2 > X3.
+
+attackable(R1, R2) :- rookPos(R1, X1, Y), rookPos(R2, X2, Y), R1!=R2, X1!=X2, #count{Rs : rookPos(Rs, _, Y)} = 2.
+attackable(R1, R2) :- rookPos(R1, X, Y1), rookPos(R2, X, Y2), R1!=R2, Y1!=Y2, #count{Rs : rookPos(Rs, X, _)} = 2.
+
+attackable(R2, R1) :- attackable(R1, R2).
+
+% Checks
+% "Answer set killing"
+% It is not allowed that...
+:- rookAttacks(R, N), rookPos(R, X, Y), #count{R1 : attackable(R, R1)} != N.
+:- rookPos(R, X, Y), rookPos(R1, X, Y), R!=R1.

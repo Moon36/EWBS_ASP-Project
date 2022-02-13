@@ -1,0 +1,7 @@
+#show rookPos/3.
+% 8 Model(s)
+
+size(2).
+
+rookAttacks(r1, 1).
+rookAttacks(r2, 1).

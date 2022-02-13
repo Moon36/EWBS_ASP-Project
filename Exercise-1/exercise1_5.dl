@@ -1,0 +1,13 @@
+#show visited/2.
+% 2 Model(s)
+
+node(a). node(b). node(c). node(d). node(e).
+edge(a, a). edge(a, b). edge(a, c). edge(a, d).
+edge(b, b). edge(b, c). edge(b, e).
+edge(c, c). edge(c, b). edge(c, d).
+edge(d, d). edge(d, c). edge(d, e).
+edge(e, e). edge(e, d).
+group(a, a).
+group(b, c). group(c, d).
+group(e, e).
+prior(a, b). prior(d, e).

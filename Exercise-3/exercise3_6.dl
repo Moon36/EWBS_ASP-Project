@@ -1,0 +1,10 @@
+#show groupExpenses/2.
+#show universityExpenses/1.
+% Model: universityExpenses(100). groupExpenses(g1,100).
+
+person(a, 100).
+
+assists(a, a).
+
+assigned(a, g1).
+

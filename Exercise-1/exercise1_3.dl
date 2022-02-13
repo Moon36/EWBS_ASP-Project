@@ -1,0 +1,16 @@
+#show visited/2.
+% 72 Model(s)
+
+node(a). node(b). node(c). node(d). node(e). node(f). node(g). node(h).
+edge(a, b). edge(a, c). edge(a, d). edge(a, e). edge(a, f). edge(a, g). edge(a, h).
+edge(b, a). edge(b, c). edge(b, d). edge(b, e). edge(b, f). edge(b, g). edge(b, h).
+edge(c, a). edge(c, b). edge(c, d). edge(c, e). edge(c, f). edge(c, g). edge(c, h).
+edge(d, a). edge(d, b). edge(d, c). edge(d, e). edge(d, f). edge(d, g). edge(d, h).
+edge(e, a). edge(e, b). edge(e, c). edge(e, d). edge(e, f). edge(e, g). edge(e, h).
+edge(f, a). edge(f, b). edge(f, c). edge(f, d). edge(f, e). edge(f, g). edge(f, h).
+edge(g, a). edge(g, b). edge(g, c). edge(g, d). edge(g, e). edge(g, f). edge(g, h).
+edge(h, a). edge(h, b). edge(h, c). edge(h, d). edge(h, e). edge(h, f). edge(h, g).
+group(a, b). group(b, c).
+group(d, e). group(e, f).
+group(g, h).
+prior(a, f). prior(f, g).

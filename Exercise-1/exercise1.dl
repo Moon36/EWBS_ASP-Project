@@ -1,0 +1,34 @@
+% Author: Manuel Waibel (11907091)
+% Exercise 1
+% Constrained Hamilton Path
+
+% node(X): X is a node in the given graph
+% edge(X1, X2): there is a directed edge from node X1 to X2 in the graph	X1 -> X2
+% group(X1, X2): node X1 and X2 are in the same group						{X1, X2}
+% prior(X1, X2): the group of node X1 comes before the the group of X2		X1 < X2
+
+% Add implied rules
+group(X2, X1) :- group(X1, X2).
+group(X1, X3) :- group(X1, X2), group(X2, X3).
+prior(X1, X3) :- prior(X1, X2), prior(X2, X3).
+prior(X, Z) :- not group(X, Y), not group(X, Z), group(Y, Z), prior(X, Y).
+prior(Y, Z) :- group(X, Y), prior(X, Z).
+
+% Specify start node
+1 = {start(X) : node(X), node(Y), not prior(Y, X)}.
+
+% Create all possible combinations of paths
+{paths(X, Y)} :- edge(X, Y).
+
+% Define
+visited(X, 1) :- start(X).
+visited(Y, T+1) :- visited(X, T), paths(X, Y), not prior(Y, X), T <= #count{Z : node(Z)}.
+
+
+% Checks
+% "Answer set killing"
+% It is not allowed that...
+:- node(X), not visited(X, _).
+:- paths(X, Y1), paths(X, Y2), Y1 != Y2.
+:- paths(X1, Y), paths(X2, Y), X1 != X2.
+:- K = {paths(_, _)}, K2 = #count{Z : node(Z)}, K>=K2.
